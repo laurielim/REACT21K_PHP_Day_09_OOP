@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="489fe5e0-7b24-42b9-816d-2c24f8d457e9" />
+          <option name="name" value="data" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$/var/data.db" />
+            </array>
+          </option>
+        </State>
+      </list>
+    </option>
+  </component>
+</project>
