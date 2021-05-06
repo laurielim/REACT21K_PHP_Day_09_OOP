@@ -98,7 +98,7 @@ class HomeScreenController extends AbstractController
     }
 
     /**
-     * @Route("/recipe/remove/{id}", name="edit_a_recipe")
+     * @Route("/recipe/remove/{id}", name="remove_a_recipe")
      */
     public function removeRecipe($id){
         $entityManager = $this->getDoctrine()->getManager();
