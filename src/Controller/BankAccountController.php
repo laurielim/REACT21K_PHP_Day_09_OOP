@@ -23,15 +23,16 @@ class BankAccountController extends AbstractController
         $bank->addAccount($secondAcc);
         $bank->addAccount($thirdAcc);
 
-//        $bank->getAccountById(9999)->deposit(-1000); // illegal
-//        $bank->getAccountById(9999)->deposit(1000);
+//      $resp = $bank->getAccountById(9999)->deposit(-1000); // illegal
+//      $resp = $bank->getAccountById(9999)->deposit(1000);
 
-//        $bank->getAccountById(123)->withdraw(-1000); // illegal
-//        $bank->getAccountById(123)->withdraw(10000); // legal but not possible
-//        $bank->getAccountById(123)->withdraw(1000);
+//      $resp = $bank->getAccountById(123)->withdraw(-1000); // illegal
+//      $resp = $bank->getAccountById(123)->withdraw(10000); // legal but not possible
+        $resp = $bank->getAccountById(123)->withdraw(1000);
 
         return $this->json([
             'bank_id' => 123,
+            'message' => $resp,
             'balance' => $bank->getAccountById(123)->getBalance(),
         ]);
     }

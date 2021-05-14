@@ -42,5 +42,4 @@ class Bank
         }
         return null;
     }
-
 }
