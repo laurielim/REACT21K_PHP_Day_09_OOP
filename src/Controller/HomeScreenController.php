@@ -12,28 +12,33 @@ use \Symfony\Component\HttpFoundation\JsonResponse;
 class HomeScreenController extends AbstractController
 {
     /**
-     * @Route("/recipe/add", name="add_new_recipe")
+     * @Route("/recipe/add", name="add_new_recipe", methods={"POST"})
      */
-    public function addRecipe(): Response
+    public function addRecipe(Request $request): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
+//        $newRecipe = new Recipe();
+//        $newRecipe->setName('Omelette');
+//        $newRecipe->setIngredients('eggs, oil');
+//        $newRecipe->setDifficulty('easy');
 
-        $newRecipe = new Recipe();
-        $newRecipe->setName('Omelette');
-        $newRecipe->setIngredients('eggs, oil');
-        $newRecipe->setDifficulty('easy');
+      $newRecipe = $request->getContent();
+      $decodedRecipe = json_decode($newRecipe, true);
 
-        $newRecipe1 = new Recipe();
-        $newRecipe1->setName('waffle');
-        $newRecipe1->setIngredients('eggs, oil, flour, butter, sugar');
-        $newRecipe1->setDifficulty('medium');
+      $newRecipe = new Recipe();
+      $newRecipe->setName($decodedRecipe['name']);
+      $newRecipe->setIngredients($decodedRecipe['ingredients']);
+      $newRecipe->setDifficulty(array("1",2,"3"));
 
+
+
+
+     /*   $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($newRecipe);
-        $entityManager->persist($newRecipe1);
+        $entityManager->flush();*/
 
-        $entityManager->flush();
+        return $this->json($newRecipe->getName());
 
-        return new Response('trying to add new recipe...' . $newRecipe1->getId() . $newRecipe->getId());
+        // return new Response($newRecipe->getName());
     }
 
     /**

@@ -61,12 +61,12 @@ class Recipe
         return $this;
     }
 
-    public function getDifficulty(): ?string
+    public function getDifficulty(): ?array
     {
         return $this->difficulty;
     }
 
-    public function setDifficulty(string $difficulty): self
+    public function setDifficulty(array $difficulty): self
     {
         $this->difficulty = $difficulty;
 
