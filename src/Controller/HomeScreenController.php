@@ -7,13 +7,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use \Symfony\Component\HttpFoundation\JsonResponse;
 
 class HomeScreenController extends AbstractController
 {
     /**
      * @Route("/recipe/add", name="add_new_recipe")
      */
-    public function addRecipe(){
+    public function addRecipe(): Response
+    {
         $entityManager = $this->getDoctrine()->getManager();
 
         $newRecipe = new Recipe();
@@ -37,7 +39,8 @@ class HomeScreenController extends AbstractController
     /**
      * @Route("/recipe/all", name="get_all_recipe")
      */
-    public function getAllRecipe(){
+    public function getAllRecipe(): JsonResponse
+    {
         $recipes = $this->getDoctrine()->getRepository(Recipe::class)->findAll();
 
         $response = [];
@@ -57,7 +60,7 @@ class HomeScreenController extends AbstractController
     /**
      * @Route("/recipe/find/{id}", name="find_a_recipe")
      */
-    public function findRecipe($id) {
+    public function findRecipe($id): JsonResponse {
         $recipe = $this->getDoctrine()->getRepository(Recipe::class)->find($id);
 
         if (!$recipe) {
@@ -77,7 +80,7 @@ class HomeScreenController extends AbstractController
     /**
      * @Route("/recipe/edit/{id}/{name}", name="edit_a_recipe")
      */
-    public function editRecipe($id, $name) {
+    public function editRecipe($id, $name): JsonResponse {
         $entityManager = $this->getDoctrine()->getManager();
         $recipe = $this->getDoctrine()->getRepository(Recipe::class)->find($id);
 
@@ -98,7 +101,7 @@ class HomeScreenController extends AbstractController
     /**
      * @Route("/recipe/remove/{id}", name="remove_a_recipe")
      */
-    public function removeRecipe($id) {
+    public function removeRecipe($id): JsonResponse {
         $entityManager = $this->getDoctrine()->getManager();
         $recipe = $this->getDoctrine()->getRepository(Recipe::class)->find($id);
 
