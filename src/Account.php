@@ -5,15 +5,16 @@ namespace App;
 
 
 use App\Utils\BankAccountInterface;
+use App\Utils\KeyInterface;
 
 class Account implements BankAccountInterface
 {
     private int $balance;
-    private int $id;
+    private KeyInterface $key;
 
-    public function __construct($balance, $id) {
+    public function __construct(int $balance,KeyInterface $key) {
         $this->balance = $balance;
-        $this->id = $id;
+        $this->key = $key;
     }
 
     /**
@@ -25,11 +26,11 @@ class Account implements BankAccountInterface
     }
 
     /**
-     * @return int
+     * @return KeyInterface
      */
-    public function getId(): int
+    public function getKey(): KeyInterface
     {
-        return $this->id;
+        return $this->key;
     }
 
     /**
