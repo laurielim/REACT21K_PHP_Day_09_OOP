@@ -4,7 +4,9 @@
 namespace App;
 
 
-class Account
+use App\Utils\BankAccountInterface;
+
+class Account implements BankAccountInterface
 {
     private int $balance;
     private int $id;
@@ -41,36 +43,32 @@ class Account
     /**
      * Add amount to balance
      * @param int $amount
-     * @return string
      */
-    public function deposit(int $amount)
+    public function deposit(int $amount): void
     {
-        if ($amount < 0) {
-            return 'Cannot deposit negative numbers';
-        } else {
+        if ($amount > 0) {
             $current = $this->getBalance();
             $newBalance = $current + $amount;
             $this->setBalance($newBalance);
-            return strval($amount) . '€ deposited successfully.';
         }
     }
 
     /**
      * Subtract amount from balance
      * @param int $amount
-     * @return string
+     * @return bool
      */
-    public function withdraw(int $amount): string
+    public function withdraw(int $amount): bool
     {
         if ($amount < 0) {
-            return 'Cannot withdraw negative numbers';
+            return false;
         } elseif ($amount > $this->getBalance()) {
-            return 'Insufficient funds';
+            return false;
         } else {
             $current = $this->getBalance();
             $newBalance = $current - $amount;
             $this->setBalance($newBalance);
-            return  strval($amount) . '€ withdrawn.';
+            return  true;
         }
     }
 
