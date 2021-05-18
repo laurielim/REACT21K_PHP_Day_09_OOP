@@ -47,8 +47,7 @@ class Account implements BankAccountInterface
     public function deposit(int $amount): void
     {
         if ($amount > 0) {
-            $current = $this->getBalance();
-            $newBalance = $current + $amount;
+            $newBalance = $this->getBalance() + $amount;
             $this->setBalance($newBalance);
         }
     }
@@ -60,16 +59,14 @@ class Account implements BankAccountInterface
      */
     public function withdraw(int $amount): bool
     {
-        if ($amount < 0) {
-            return false;
-        } elseif ($amount > $this->getBalance()) {
-            return false;
-        } else {
-            $current = $this->getBalance();
-            $newBalance = $current - $amount;
+        if ($amount > 0 && $amount < $this->getBalance()) {
+            $newBalance = $this->getBalance() - $amount;
             $this->setBalance($newBalance);
             return  true;
+        } else {
+            return false;
         }
+
     }
 
 

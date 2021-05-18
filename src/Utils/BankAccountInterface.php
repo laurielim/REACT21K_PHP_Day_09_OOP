@@ -7,6 +7,7 @@ namespace App\Utils;
 interface BankAccountInterface
 {
     /**
+     *
      * @param int $amount contains the amount to be withdraw, non negative
      * @return bool
      */
