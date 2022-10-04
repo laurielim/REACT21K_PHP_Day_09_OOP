@@ -1,8 +1,8 @@
 # Object Oriented Programming with Symfony
 
-This repo contains the class exercise we did on day 9 of the [Programming in PHP](https://github.com/laurielim/REACT21K_PHP) course which is part of the Full Stack Web Development Program at [Business College Helsinki](https://en.bc.fi/qualifications/full-stack-web-developer-program/). It's a continuation of the previous lessons we had. It is also [hosted on Heroku](//obscure-journey-43772.herokuapp.com).
+This repo contains the class exercise we did on day 9 of the [Programming in PHP](https://github.com/laurielim/REACT21K_PHP) course which is part of the Full Stack Web Development Program at [Business College Helsinki](https://en.bc.fi/qualifications/full-stack-web-developer-program/). It's a continuation of the previous lessons we had. It was previously hosted on Heroku.
 
-An SQL database was also enabled with CRUD commands implemented. The local db is running on SQLite and the hosted version uses Heroku Postrgres.
+An SQL database was also enabled with CRUD commands implemented. The local db runs on SQLite and the hosted version used Heroku Postgres. Unfortunately, Heroku has removed the free plan for Heroku Postgres so the online instance was taken down.
 
 ## Technologies used
 
@@ -12,7 +12,7 @@ Built with:
 - Symfony
 - SQLite/PostgreSQL
 
-Hosted on:
+Previously hosted on:
 
 - Heroku
 
